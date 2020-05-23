@@ -25,7 +25,6 @@
 							<div v-for="key in plants[0]" v-bind:class="{ bad: ['X', 'W'].includes(key), good: ['G', 'Y', 'H'].includes(key) }">
 								{{ key }}
 							</div>
-						
 						</div>
 
 						<div class="dropdowns">
@@ -216,7 +215,7 @@
 
 									<div class="container">
 										<div class="row row-override">
-											<div class="col-4" v-for="(plant, index) in outputResults" v-on:click="">
+											<div class="col-4" v-for="(plant, index) in outputResults" v-on:click="selectResult(index)">
 												<div class="slot">
 													<img width="100%" height="100%" src="img/hemp_clone_icon.png"/>
 													<span>

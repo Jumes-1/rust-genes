@@ -151,6 +151,7 @@ var app = new Vue({
 			[ "X", "X", "X", "X", "X", "X" ], 
 			[ "X", "X", "X", "X", "X", "X" ]
 		],
+		input: "",
 		selectionModel: false,
 		outputResults: [],
 		outputPositions: [],
@@ -292,6 +293,13 @@ var app = new Vue({
 			this.selectionModel = true
 
 			// Show options to user
+		},
+		selectResult: function (index) {
+			console.log("Selected " + index)
+			console.log(this.outputResults[index])
+			console.log(this.outputPositions[index])
+
+			this.positions = outputPositions[index]
 		},
 		close: function () {
 			this.selectionModel = false
