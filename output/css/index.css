@@ -1,0 +1,116 @@
+body {
+  background-image: url("../../img/rust_background.jpg");
+  background-size: cover;
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+}
+
+.top-padding {
+  padding-top: 16px;
+}
+
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.slot {
+  background-color: #3c3c3cab;
+  width: 100%;
+  height: 170px;
+  margin-bottom: 20px;
+}
+.slot h3 {
+  margin-top: 8px;
+  text-align: center;
+  color: white;
+  display: inline-block;
+  width: 100%;
+}
+.slot.selected {
+  background-color: #3c3c3c;
+}
+.slot span {
+  position: absolute;
+  right: 16px;
+  top: 4px;
+}
+.slot span b.good {
+  color: green;
+}
+.slot span b.bad {
+  color: red;
+}
+
+.col, .col-2, .col-3, .col-6, .col-4 {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.row-override {
+  margin-right: -25px !important;
+  margin-left: -25px !important;
+}
+
+.genetics {
+  float: left;
+  padding: 12px;
+  width: 100%;
+  text-align: center;
+}
+.genetics > div {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 50%;
+  color: white;
+  margin-right: 8px;
+}
+.genetics > div::before {
+  position: absolute;
+  font-size: 16px;
+  margin-left: -14.8px;
+  margin-top: -1px;
+  font-weight: 900;
+}
+.genetics > div.bad {
+  background-color: red;
+}
+.genetics > div.bad:nth-of-type(1)::before {
+  content: " ";
+}
+.genetics > div.bad::before {
+  content: "-";
+  color: red;
+}
+.genetics > div.good {
+  background-color: green;
+}
+.genetics > div.good:nth-of-type(1)::before {
+  content: " ";
+}
+.genetics > div.good::before {
+  content: "-";
+  color: green;
+}
+
+.dropdowns {
+  width: 100%;
+  padding: 2px;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+}
+.dropdowns select {
+  margin: 2px 0px;
+  width: 40px;
+}
+
+.model-white {
+  color: white !important;
+}
+
+/*# sourceMappingURL=index.css.map */
