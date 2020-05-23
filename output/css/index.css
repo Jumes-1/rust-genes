@@ -109,8 +109,11 @@ h1 {
   width: 40px;
 }
 
-.model-white {
+.modal.modal-white {
   color: white !important;
+}
+.modal.modal-white.display {
+  display: block;
 }
 
 /*# sourceMappingURL=index.css.map */

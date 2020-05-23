@@ -156,7 +156,34 @@ var app = new Vue({
 		outputPositions: [],
 		selected: [],
 		availablePlants: [
-			"YHYWGH",
+			"GYYGGH",
+			"XYHGHH",
+			"GYYGYX",
+			"XYGGHH",
+			"WHHGYH",
+			"HYYYGH",
+			"GGYHYH",
+			"HGHWGH",
+			"WGGYYH",
+			"GGHYWG",
+			"WHYGGH",
+			"XGYGHH",
+			"GWHGGH",
+			"WYHGYG",
+			"HGHWHH",
+			"WYGHYY",
+			"XGYHYY",
+			"XHYHGW",
+			"WGGWYH",
+			"WHGXYH",
+			"WGYHGH",
+			"XGHWYY",
+			"XHYWYG",
+			"GGYYYG",
+			"WGGYYH",
+			"XHYWYG",
+			"GGHYWG"
+			/*"YHYWGH",
 			"GYGGGW",
 			"XHGGYY",
 			"XHGYYH",
@@ -179,7 +206,7 @@ var app = new Vue({
 			"GGYWHH",
 			"XHHGYG",
 			"WYYHGH",
-			"WYHYYH",
+			"WYHYYH",*/
 		]
 	},
 	methods: {
@@ -189,7 +216,7 @@ var app = new Vue({
 			this.availablePlants.push(makeCopyOfPlant)
 		},
 		calcBestCombination: function (event) {
-			if (this.availablePlants.length < 2) {
+			if (this.availablePlants.length < 3) {
 				return
 			}
 
@@ -282,13 +309,6 @@ var app = new Vue({
 			console.log(actual);
 
 			return actual
-		},
-		displayType: function () {
-			if (this.selectionModel) {
-				return "block"
-			} else {
-				return "none"
-			}
 		}
 	}	
 })

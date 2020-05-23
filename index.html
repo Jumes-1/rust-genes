@@ -199,7 +199,7 @@
 				</div>
 			</div>
 
-			<div class="modal model-white" v-bind:style="{ display: displayType }">
+			<div class="modal modal-white" v-bind:class="{ display: selectionModel }">
 				<div class="modal-dialog">
 					<div class="modal-content" style="background-color: #585858;">
 						<div class="modal-container">
@@ -231,8 +231,7 @@
 			
 							<div class="modal-footer" style="border-top: 1px solid #484848;">
 								<slot name="footer">
-									
-									<button class="btn btn-success" v-bind:click="close">
+									<button class="btn btn-success" v-on:click="selectionModel = false">
 										Close
 									</button>
 								</slot>
