@@ -183,7 +183,7 @@ var app = new Vue({
 		]
 	},
 	methods: {
-		
+
 		addPlant: function (event) {
 			var makeCopyOfPlant = this.plants[0].slice(0)
 			this.availablePlants.push(makeCopyOfPlant)
@@ -265,6 +265,9 @@ var app = new Vue({
 			this.selectionModel = true
 
 			// Show options to user
+		},
+		close: function () {
+			this.selectionModel = false
 		}
 	},
 	computed: {
