@@ -95,7 +95,7 @@ function nullableCalc(array) {
 		// Y Y G G
 		let characterHeatmap = arrayHeatmap([array[0][i], array[1][i], array[2][i], array[3][i]]);
 
-		// if (characterHeatmap.g == 4) {
+		// if (characterHeatmap.g == 2) {
 		// 	actual.push("G")
 		// 	continue
 		// }
@@ -105,17 +105,32 @@ function nullableCalc(array) {
 		// 	continue
 		// }
 
+		// if (characterHeatmap.h == 2) {
+		// 	actual.push("H")
+		// 	continue
+		// }
+
 		// return null
 
 		if (characterHeatmap.x > 1) return null
 		if (characterHeatmap.w > 1) return null
-		if (characterHeatmap.h >= 2) return null
+		if (characterHeatmap.h > 2) return null
 		
 		let goodGenes = characterHeatmap.g + characterHeatmap.y
 
 		if (goodGenes <= 1) return null
 		
 		if (characterHeatmap.y == 2 && characterHeatmap.g == 2) {
+			actual.push("?")
+			continue
+		}
+
+		if (characterHeatmap.y == 2 && characterHeatmap.h == 2) {
+			actual.push("?")
+			continue
+		}
+
+		if (characterHeatmap.g == 2 && characterHeatmap.h == 2) {
 			actual.push("?")
 			continue
 		}
@@ -157,57 +172,28 @@ var app = new Vue({
 		outputPositions: [],
 		selected: [],
 		availablePlants: [
-			"GYYGGH",
-			"XYHGHH",
-			"GYYGYX",
-			"XYGGHH",
-			"WHHGYH",
-			"HYYYGH",
-			"GGYHYH",
-			"HGHWGH",
-			"WGGYYH",
-			"GGHYWG",
-			"WHYGGH",
-			"XGYGHH",
-			"GWHGGH",
-			"WYHGYG",
-			"HGHWHH",
-			"WYGHYY",
-			"XGYHYY",
-			"XHYHGW",
-			"WGGWYH",
-			"WHGXYH",
-			"WGYHGH",
-			"XGHWYY",
-			"XHYWYG",
-			"GGYYYG",
-			"WGGYYH",
-			"XHYWYG",
-			"GGHYWG"
-			/*"YHYWGH",
-			"GYGGGW",
-			"XHGGYY",
-			"XHGYYH",
-			"HHYWYH",
-			"HHGXGH",
-			"HGHXGH",
-			"YHHXGH",
-			"WGHGYH",
-			"WYYYHH",
-			"WHGHGH",
-			"HGYHYH",
-			"YGHWHH",
-			"WYGGYG",
-			"YHHWHH",
-			"YGYXHH",
-			"GHHHYW",
-			"HGHXGH",
-			"YYGXYG",
-			"GGGHHW",
-			"GGYWHH",
-			"XHHGYG",
-			"WYYHGH",
-			"WYHYYH",*/
+			"WGGGHX",
+			"HGHGGW",
+			"WGYYHX", 
+			"YYHWGH",
+			"WYYXYY",
+			"XYGXGY",
+			"YYYYGW",
+			"WXHYGY",
+			"GYYYXY",
+			"GYGHGX",
+			"HGYHYX",
+			"WYYHGW",
+			"GGHWGX",
+			"YYYWHX",
+			"XHYWGG",
+			"GYGWWY",
+			"YGHXGY",
+			"WYGXGG",
+			"HYYYHH",
+			"GYGYGY",
+			"GYGYGG",
+			"YGHYGY",
 		]
 	},
 	methods: {
@@ -226,6 +212,8 @@ var app = new Vue({
 			// 4 plant types
 
 			// order of plant types doesn't matter, two of the same plant type should not be used.
+			
+			var timeStarted = Math.round((new Date()).getTime() / 1000);
 			
 			var output = [];
 			var results = [];
@@ -252,8 +240,8 @@ var app = new Vue({
 								resultOutput.includes("X") || 
 								resultOutput.includes("W") || 
 								howManyInString("H", simplified) > 1 || // Hiding with too many H values
-								//howManyInString("Y", simplified) > 3 || // Hiding with too many Y values
-								//howManyInString("G", simplified) > 3 || // Hiding with too many G values
+								howManyInString("Y", simplified) != 4 || // Hiding with too many Y values
+								howManyInString("G", simplified) != 2 || // Hiding with too many G values
 								//resultOutput.includes("H") || 
 								results.includes(simplified)) {
 								continue
@@ -292,6 +280,11 @@ var app = new Vue({
 			
 			this.selectionModel = true
 
+			var timeEnded = Math.round((new Date()).getTime() / 1000);
+			var diff = timeEnded - timeStarted
+
+			console.log(timeStarted + " " + timeEnded + " = " + diff)
+
 			// Show options to user
 		},
 		selectResult: function (index) {
@@ -299,7 +292,8 @@ var app = new Vue({
 			console.log(this.outputResults[index])
 			console.log(this.outputPositions[index])
 
-			this.positions = outputPositions[index]
+			this.selected = this.outputPositions[index]
+			this.close()
 		},
 		close: function () {
 			this.selectionModel = false
